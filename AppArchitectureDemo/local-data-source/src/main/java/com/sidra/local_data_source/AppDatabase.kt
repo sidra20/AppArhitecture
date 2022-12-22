@@ -11,31 +11,4 @@ abstract class AppDatabase: RoomDatabase() {
 
     abstract fun noteDao():AppDao
 
-    companion object{
-        private var instance:AppDatabase?=null
-
-
-        fun getInstance(context: Context):AppDatabase
-        {
-            @Volatile
-            if(instance==null)
-            {
-
-
-                synchronized(this)
-                {
-
-
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        AppDatabase::class.java,
-                        "mynotedb"
-                    )
-                        .build()
-                }
-            }
-            return instance!!
-        }
-
-    }
 }
